@@ -11,6 +11,9 @@ const container = document.getElementById("image-container");
 const textContainer = document.getElementById("text-container");
 const numberContainer = document.getElementById("number-container");
 const button = document.getElementById("gacha-btn");
+const resultTextArea = document.getElementById("result-inner");
+const tweetBtn = document.getElementById("tweet-btn");
+let lastResult = null; // 最後のガチャ結果を保存
 
 button.addEventListener("click", () => {
   button.disabled = true;
@@ -19,7 +22,8 @@ button.addEventListener("click", () => {
   textContainer.textContent = "";
   numberContainer.textContent = "";
   textContainer.classList.remove("fade-in");
-  numberContainer.classList.remove("fade-in");
+  // numberContainer.classList.remove("fade-in");
+  resultTextArea.classList.remove("fade-in");
 
   let count = 0;
   const maxCount = 20;
@@ -32,7 +36,8 @@ button.addEventListener("click", () => {
     textContainer.textContent = "";
     numberContainer.textContent = "";
     textContainer.classList.remove("fade-in");
-    numberContainer.classList.remove("fade-in");
+    // numberContainer.classList.remove("fade-in");
+    resultTextArea.classList.remove("fade-in");
 
     container.innerHTML = `<img src="${random.img}">`;
     count++;
@@ -44,14 +49,27 @@ button.addEventListener("click", () => {
       // ★ 最終結果
       const result = items[Math.floor(Math.random() * items.length)];
       container.innerHTML = `<img src="${result.img}">`;
+      lastResult = result;
 
       // ★ テキストと数字をフェードイン表示
       textContainer.textContent = result.text;
       numberContainer.textContent = `印刷番号：${result.number} / L版`;
       textContainer.classList.add("fade-in");
-      numberContainer.classList.add("fade-in");
+      // numberContainer.classList.add("fade-in");
+      resultTextArea.classList.add("fade-in");
 
       button.disabled = false;
     }
   }, 100);
+});
+
+// Xに投稿するボタン
+tweetBtn.addEventListener("click", () => {
+  if (!lastResult) return;
+
+  const text = `けもみくじで《${lastResult.text}》を引きました\n${location.href}`;
+
+  const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+
+  window.open(url, "_blank");
 });

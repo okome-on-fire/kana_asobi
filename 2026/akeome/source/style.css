@@ -128,7 +128,7 @@ h2 br {
   /* flex-direction: column; */
 }
 .result-area > *:not(:last-child) {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 #text-container {
   color: #E34234;
@@ -173,11 +173,24 @@ h2 br {
   transform: translateX(10%);
 }
 
+#tweet-btn {
+  display: none;
+  padding: 5px 10px;
+  background: #2C2C2C;
+  color: #fff;
+  margin-top: 5px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+.fade-in #tweet-btn {
+  display: block;
+}
+
 .note {
   font-size: 12px;
 }
 .note a {
-  color: #E34234;
+  color: #E34234 !important;
 }
 .note li:not(:last-child) {
   margin-bottom: 3px;
