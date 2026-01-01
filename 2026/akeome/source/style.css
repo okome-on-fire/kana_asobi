@@ -1,0 +1,112 @@
+/* 基本設定用 */
+.zen-maru-gothic-regular,
+p,
+li,
+button,
+a {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.hachi-maru-pop-regular {
+  font-family: "Hachi Maru Pop", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: #FFFFE0;
+  color: #2C2C2C;
+  height: 100vh;
+}
+
+/* ローディングアニメーション */
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* もにょもにょ */
+.omikuji-area {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.back-images {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.back-images-item {
+  width: 20%;
+  height: auto;
+}
+
+/* メイン */
+.main-contents {
+  position: relative;
+  z-index: 10;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+h2 {
+  color: #E34234;
+  font-size: 80px;
+}
+h2 br {
+  display: none;
+}
+#image-container {
+  width: 90%;
+  height: auto;
+  min-height: 300px;
+  max-width: 800px;
+  border: 5px solid #FFD700;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: #fff;
+}
+.btn-area {
+  margin-top: 10px;
+}
+
+#gacha-btn {
+  display: block;
+  padding: 10px 20px;
+  background: #E34234;
+  color: #FFD700;
+  font-size: 20px;
+  border-radius: 50px;
+}
+
+/* sp用 */
+@media (max-width: 768px) {
+  h2 br {
+    display: block;
+  }
+}
