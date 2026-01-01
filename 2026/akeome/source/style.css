@@ -15,12 +15,12 @@ a {
 }
 
 body {
-  background: #FFFFE0;
+  background: #E34234;
   color: #2C2C2C;
   height: 100vh;
 }
 
-/* ローディングアニメーション */
+/* アニメーション */
 .loader {
   border: 8px solid #f3f3f3;
   border-top: 8px solid #3498db;
@@ -29,7 +29,6 @@ body {
   height: 60px;
   animation: spin 1s linear infinite;
 }
-
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -40,6 +39,16 @@ body {
   }
 }
 
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
 /* もにょもにょ */
 .omikuji-area {
   position: relative;
@@ -47,17 +56,33 @@ body {
   margin: 0 auto;
   height: 100%;
 }
-
-.back-images {
-  position: fixed;
-  top: 0;
+.omikuji-area::before {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 100%;
+  background: #FFFFE0;
+  position: absolute;
   left: 0;
-  z-index: 1;
+  right: 0;
+  margin: auto;
 }
-
-.back-images-item {
-  width: 20%;
-  height: auto;
+.bg-area {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+.bg-area img:nth-child(1) {
+  position: absolute;
+  left: -100px;
+  top: 10px;
+}
+.bg-area img:nth-child(2) {
+  position: absolute;
+  right: -100px;
+  top: 50px;
 }
 
 /* メイン */
@@ -68,21 +93,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
   flex-direction: column;
+  z-index: 10;
 }
 h2 {
   color: #E34234;
-  font-size: 80px;
+  font-size: 70px;
 }
 h2 br {
   display: none;
 }
 #image-container {
-  width: 90%;
-  height: auto;
-  min-height: 300px;
-  max-width: 800px;
+  width: 810px;
+  height: 540px;
   border: 5px solid #FFD700;
   border-radius: 20px;
   display: flex;
@@ -91,10 +114,30 @@ h2 br {
   overflow: hidden;
   background: #fff;
 }
-.btn-area {
-  margin-top: 10px;
+.result-area {
+  border: 5px solid #FFD700;
+  border-radius: 20px;
+  width: 600px;
+  height: 100px;
+  margin: 10px auto;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-direction: column; */
+}
+.result-area > *:not(:last-child) {
+  margin-right: 10px;
+}
+#text-container {
+  color: #E34234;
+  font-size: 40px;
+  font-weight: bold;
 }
 
+.btn-area {
+  margin: 20px auto;
+}
 #gacha-btn {
   display: block;
   padding: 10px 20px;
@@ -104,9 +147,52 @@ h2 br {
   border-radius: 50px;
 }
 
+.note {
+  font-size: 12px;
+}
+.note li:not(:last-child) {
+  margin-bottom: 7px;
+}
+
 /* sp用 */
+.p-sp {
+  display: none;
+}
 @media (max-width: 768px) {
-  h2 br {
+  .p-sp {
     display: block;
+  }
+  .bg-area {
+    height: 100vh;
+  }
+  .bg-area img:nth-child(1) {
+    width: 60%;
+    left: -20vw;
+    top: 10px;
+  }
+  .bg-area img:nth-child(2) {
+    width: 40%;
+    right: -10vw;
+    top: 20vh;
+  }
+  h2 {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 50px;
+  }
+  .main-contents {
+    flex-wrap: nowrap;
+  }
+  #image-container {
+    max-width: 90%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+  }
+  #image-container img {
+    width: 100%;
+  }
+  .result-area {
+    max-width: 90%;
+    min-height: 100px;
   }
 }
