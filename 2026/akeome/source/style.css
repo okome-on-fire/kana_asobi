@@ -143,8 +143,33 @@ h2 br {
   padding: 10px 20px;
   background: #E34234;
   color: #FFD700;
+  border: 2px solid #E34234;
   font-size: 20px;
   border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  transition: .3s;
+  z-index: 1;
+}
+#gacha-btn::before {
+  content: "";
+  width: 120%;
+  height: 200%;
+  position: absolute;
+  top: -50%;
+  right: 0;
+  z-index: -1;
+  background: #FFD700;
+  border-radius: 0 100% 100% 0;
+  transform: translateX(-100%);
+  transition: transform ease .3s;
+}
+#gacha-btn:hover {
+  font-weight: bold;
+  color: #E34234;
+}
+#gacha-btn:hover::before {
+  transform: translateX(10%);
 }
 
 .note {
