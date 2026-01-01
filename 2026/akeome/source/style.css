@@ -99,6 +99,7 @@ body {
 h2 {
   color: #E34234;
   font-size: 70px;
+  line-height: 1;
 }
 h2 br {
   display: none;
@@ -175,8 +176,11 @@ h2 br {
 .note {
   font-size: 12px;
 }
+.note a {
+  color: #E34234;
+}
 .note li:not(:last-child) {
-  margin-bottom: 7px;
+  margin-bottom: 3px;
 }
 
 /* sp用 */
@@ -203,7 +207,8 @@ h2 br {
   h2 {
     writing-mode: vertical-rl;
     text-orientation: upright;
-    font-size: 50px;
+    font-size: 46px;
+    line-height: 1.5;
   }
   .main-contents {
     flex-wrap: nowrap;
