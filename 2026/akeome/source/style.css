@@ -116,6 +116,9 @@ h2 br {
   overflow: hidden;
   background: #fff;
 }
+#image-container + p {
+  font-size: 12px;
+}
 .result-area {
   border: 5px solid #FFD700;
   border-radius: 20px;
