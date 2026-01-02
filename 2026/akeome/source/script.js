@@ -14,6 +14,9 @@ const button = document.getElementById("gacha-btn");
 const resultTextArea = document.getElementById("result-inner");
 const tweetBtn = document.getElementById("tweet-btn");
 let lastResult = null; // 最後のガチャ結果を保存
+const modal = document.getElementById("modal");
+const modalImg = document.getElementById("modal-img");
+const modalClose = document.getElementById("modal-close");
 
 button.addEventListener("click", () => {
   button.disabled = true;
@@ -48,8 +51,26 @@ button.addEventListener("click", () => {
 
       // ★ 最終結果
       const result = items[Math.floor(Math.random() * items.length)];
-      container.innerHTML = `<img src="${result.img}">`;
+      container.innerHTML = `<img id="result-img" src="${result.img}">`;
       lastResult = result;
+
+      // 画像クリックでモーダル表示
+      document.getElementById("result-img").addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = result.img;
+      });
+
+      // モーダルを閉じる
+      modalClose.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      // モーダル背景クリックでも閉じる
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.style.display = "none";
+        }
+      });
 
       // ★ テキストと数字をフェードイン表示
       textContainer.textContent = result.text;
