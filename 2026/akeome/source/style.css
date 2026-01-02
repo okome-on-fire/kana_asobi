@@ -17,7 +17,7 @@ a {
 body {
   background: #E34234;
   color: #2C2C2C;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 /* アニメーション */
@@ -54,7 +54,7 @@ body {
   position: relative;
   text-align: center;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100vh;
 }
 .omikuji-area::before {
   content: "";
