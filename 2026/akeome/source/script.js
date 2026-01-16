@@ -74,7 +74,7 @@ button.addEventListener("click", () => {
 
       // ★ テキストと数字をフェードイン表示
       textContainer.textContent = result.text;
-      numberContainer.textContent = `印刷番号：${result.number} / L版`;
+      // numberContainer.textContent = `印刷番号：${result.number} / L版`;
       textContainer.classList.add("fade-in");
       // numberContainer.classList.add("fade-in");
       resultTextArea.classList.add("fade-in");
